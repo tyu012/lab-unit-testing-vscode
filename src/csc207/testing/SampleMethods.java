@@ -1,5 +1,6 @@
 package csc207.testing;
 
+import java.math.BigInteger;
 /**
  * A variety of methods for which students should write tests.
  * 
@@ -16,7 +17,7 @@ public class SampleMethods {
    * @return The temperature in Fahrenheit.
    */
   public static int c2f(int temp) {
-    return (temp - 32) * (5 / 9);
+    return ((temp * 9/5) + 32);
   } // c2f(int)
 
   /**
@@ -70,7 +71,7 @@ public class SampleMethods {
     } // if p is even
     // Recursive case: When p is odd, result is x*(x^(p-1))
     else {
-      return expt(x * x, (p - 1) / 2);
+      return (expt(x, (p - 1))) * x;
     } // if p is odd
   } // expt(double,int)
 
@@ -128,13 +129,13 @@ public class SampleMethods {
    * @post result = ints[0] + ints[1] + ... + ints[ints.length-1]
    */
   public static int sum(int[] ints) {
-    int result = 0;
+    BigInteger result = BigInteger.valueOf(0);
 
     for (int i = 0; i < ints.length; i++) {
-      result += result + i;
+      result = result.add(BigInteger.valueOf(ints[i]));
     } // for
     
-    return result;
+    return result.intValue();
   } // result(int[])
 
 } // class SampleMethods
